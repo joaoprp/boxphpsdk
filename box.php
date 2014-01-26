@@ -41,7 +41,7 @@ class Box {
 		} else {
 			$params = array('grant_type' => 'authorization_code', 'code' => $code, 'client_id' => $this->client_id, 'client_secret' => $this->client_secret);
 		}
-		return json_decode($this->post($url, $params), true);
+		return json_decode($this->curl->post($url, $params), true);
 	}
 
 	public function readToken($type = 'file') {
@@ -158,17 +158,17 @@ class Box {
 	public function createFolder($name, $parent_id) {
 		$url = $this->build_url("/folders");
 		$params = array('name' => $name, 'parent' => array('id' => $parent_id));
-		return json_decode($this->post($url, json_encode($params)), true);
+		return json_decode($this->curl->post($url, json_encode($params)), true);
 	}
 	
 	public function updateFolder($folder, array $params) {
 		$url = $this->build_url("/folders/$folder");
-		return json_decode($this->put($url, $params), true);
+		return json_decode($this->curl->put($url, $params), true);
 	}
 	
 	public function deleteFolder($folder, array $opts) {
 		echo $url = $this->build_url("/folders/$folder", $opts);
-		$return = json_decode($this->delete($url), true);
+		$return = json_decode($this->curl->delete($url), true);
 		if(empty($return)){
 			return 'The folder has been deleted.';
 		} else {
@@ -184,17 +184,17 @@ class Box {
 	public function putFile($filename, $parent_id) {
 		$url = $this->upload_url . '/files/content';
 		$params = array('filename' => "@" . realpath($filename), 'parent_id' => $parent_id, 'access_token' => $this->access_token);
-		return json_decode($this->post($url, $params), true);
+		return json_decode($this->curl->post($url, $params), true);
 	}
 	
 	public function updateFile($file, array $params) {
 		$url = $this->build_url("/files/$file");
-		return json_decode($this->put($url, $params), true);
+		return json_decode($this->curl->put($url, $params), true);
 	}
 
 	public function deleteFile($file) {
 		$url = $this->build_url("/files/$file");
-		$return = json_decode($this->delete($url),true);
+		$return = json_decode($this->curl->delete($url),true);
 		if(empty($return)){
 			return 'The file has been deleted.';
 		} else {
