@@ -211,7 +211,7 @@ class Box {
 					$list += array($f['name'] => array('id' => $f['id']));
 					$return = $this->folderTree($f['id']);
 					if ($return)
-						$list[$f['name']] += array('child',$return);
+						$list[$f['name']] += array('child' => $return);
 				}
 			}
 		}
