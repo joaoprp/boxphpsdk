@@ -1,5 +1,5 @@
 {
-    "name": "agilize/box",
+    "name": "agilize/boxsdk",
     "description": "A simple PHP SDK for the Box APIv2",
     "authors": [
         {
