@@ -1,6 +1,7 @@
 <?php
 
 include('curl.php');
+namespace AgilizeBox;
 
 class Box {
 	public $client_id		= '';
