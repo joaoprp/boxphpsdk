@@ -15,5 +15,10 @@
         "psr-0": {
             "Agilize": "src/"
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x"
+        }
     }
 }
